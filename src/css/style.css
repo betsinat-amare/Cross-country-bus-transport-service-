@@ -17,8 +17,8 @@
     width: 200px;  
     height: 200px;            
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-    border-radius: 10px;         /* Optional: Add rounded corners */
-    transition: box-shadow 0.3s ease;  /* Smooth transition for shadow effect */
+    border-radius: 10px;        
+    transition: box-shadow 0.3s ease;  
 }           
   }
   
