@@ -3,15 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us - Cross Country Bus Transport Service</title>
-    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <title>Login & Sign Up</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="./css/login.css" /> -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <!-- Login Page -->
     <header class="d-flex align-items-center bg-turquoise p-3">
       <a href="./Home.html"
         ><img
-          src="./assets/image/image.png"
+          src="./assets/image/Logo.png"
           alt="Logo"
           class="img-fluid"
           style="max-width: 80px"
@@ -37,66 +39,52 @@
         </ul>
       </nav>
     </header>
-    <div class="container my-5">
-      <h2 class="text-center mb-4">Get in Touch With Us</h2>
-
-      <div class="contact-container mx-auto w-75">
-        <div class="contact-info text-center">
-          <h5>Contact Information</h5>
-          <p><strong>Phone:</strong> +1 (234) 567-8900</p>
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:support@crosscountrybus.com" class="text-dark"
-              >support@crosscountrybus.com</a
+    <div
+      class="container d-flex justify-content-center align-items-center vh-100"
+    >
+      <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px">
+        <h2 class="text-center mb-4">Sign Up</h2>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </div>
+          <div class="text-center mt-3">
+            <small
+              >Already have an account?
+              <a href="./signin.html">Sign in</a></small
             >
-          </p>
-          <p>
-            <strong>Address:</strong> 123 Main Street, Hometown, State, 12345
-          </p>
-        </div>
-
-        <div class="contact-form">
-          <h5 class="text-center mb-4">Contact Form</h5>
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="name">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  placeholder="Your Name"
-                  required
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Your Email"
-                  required
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                class="form-control"
-                id="message"
-                rows="4"
-                placeholder="Your Message"
-                required
-              ></textarea>
-            </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-submit px-4 py-2">
-                Send Message
-              </button>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
     <footer class="bg-turquoise text-white">
@@ -105,7 +93,7 @@
           <div class="col-md-4 text-center">
             <a href="./Home.html">
               <img
-                src="./assets/image/image.png"
+                src="./assets/image/Logo.png"
                 alt="Logo"
                 class="img-fluid mb-3"
               />
@@ -119,7 +107,7 @@
               <li><a href="./about.html" class="text-white">About Us</a></li>
               <li><a href="../src/index.html" class="text-white">Route</a></li>
               <li><a href="./contact.html" class="text-white">Contact</a></li>
-              <li><a href="./signup.html" class="text-white">Sign Up</a></li>
+              <li><a href="./login.html" class="text-white">Sign Up</a></li>
               <li><a href="./signin.html" class="text-white">Sign In</a></li>
             </ul>
           </div>
@@ -128,7 +116,7 @@
             <div class="contact-details">
               <div class="d-flex align-items-center mb-2">
                 <img
-                  src="./assets/image/icons/location_on_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+                  src="./assets/icons/location_on_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
                   alt=""
                   class="me-2 icon-smaller"
                 />
@@ -137,7 +125,7 @@
               <div class="d-flex align-items-center mb-2">
                 <a href="tel:+25100436787" class="text-white">
                   <img
-                    src="./assets/image/icons/call_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+                    src="./assets/icons/call_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
                     alt=""
                     class="me-2 icon-smaller"
                   />
@@ -147,7 +135,7 @@
               <div class="d-flex align-items-center mb-2">
                 <a href="mailto:TravelLink@gmail.com" class="text-white">
                   <img
-                    src="./assets/image/icons/mail_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+                    src="./assets/icons/mail_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
                     alt=""
                     class="me-2 icon-smaller"
                   />
@@ -162,23 +150,19 @@
             <h3 class="text-uppercase">Follow Us</h3>
             <div class="social-icons mb-3">
               <a href="#"
-                ><img
-                  src="./assets/image/icons/facebook-brands-solid.svg"
-                  alt=""
+                ><img src="./assets/icons/facebook-brands-solid.svg" alt=""
               /></a>
               <a href="#"
                 ><img
-                  src="./assets/image/icons/instagram-brands-solid (1).svg"
+                  src="./assets/icons/instagram-brands-solid (1).svg"
                   alt=""
               /></a>
               <a href="#"
-                ><img
-                  src="./assets/image/icons/linkedin-brands-solid (1).svg"
-                  alt=""
+                ><img src="./assets/icons/linkedin-brands-solid (1).svg" alt=""
               /></a>
               <a href="#"
                 ><img
-                  src="./assets/image/icons/x-twitter-brands-solid (1).svg"
+                  src="./assets/icons/x-twitter-brands-solid (1).svg"
                   alt=""
               /></a>
             </div>
@@ -187,5 +171,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="./login.ts"></script>
   </body>
 </html>

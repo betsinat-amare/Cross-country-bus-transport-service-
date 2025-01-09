@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us - Travel Link</title>
-    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -37,114 +37,61 @@
         </ul>
       </nav>
     </header>
-    <div class="container my-5">
-      <section>
-        <h2>Who We Are</h2>
-        <p>
-          At <strong>Travel Link</strong>, we believe in connecting people,
-          cities, and communities through reliable and efficient cross-country
-          bus transportation. Our mission is to provide a seamless, comfortable,
-          and eco-friendly travel experience for everyone, whether you're
-          commuting for business, visiting loved ones, or exploring new
-          destinations. With Travel Link, you can always "Travel Far, Travel
-          Smart."
-        </p>
-        <p>
-          Founded with the vision of transforming cross-country transportation,
-          we have grown into a trusted name in the industry. Our dedicated team
-          works tirelessly to ensure your journeys are not only convenient but
-          also memorable. Every ride with us represents our commitment to
-          quality, safety, and customer satisfaction.
-        </p>
-      </section>
-
-      <section>
-        <h2>Our Vision</h2>
-        <p>
-          We envision a future where travel is not just a necessity but an
-          enjoyable and enriching experience. By focusing on customer
-          satisfaction, sustainability, and innovation, we aim to set new
-          standards in the transportation industry.
-        </p>
-      </section>
-
-      <section>
-        <h2>Why Choose Travel Link?</h2>
-        <ul>
-          <li>
-            <strong>Reliable Services:</strong> We pride ourselves on
-            punctuality and reliability. With Travel Link, you can trust that
-            you'll reach your destination on time.
-          </li>
-          <li>
-            <strong>Comfortable Rides:</strong> Our buses are equipped with
-            modern amenities, including reclining seats, air conditioning,
-            Wi-Fi, and onboard entertainment, ensuring a relaxing journey.
-          </li>
-          <li>
-            <strong>Affordable Prices:</strong> We believe that travel should be
-            accessible to everyone. That’s why we offer competitive pricing
-            without compromising on quality.
-          </li>
-          <li>
-            <strong>Safety First:</strong> Your safety is our priority. Our
-            buses are maintained to the highest standards, and our drivers are
-            trained professionals with extensive experience.
-          </li>
-          <li>
-            <strong>Eco-Friendly Practices:</strong> We are committed to
-            reducing our carbon footprint by adopting sustainable practices,
-            such as using fuel-efficient vehicles and promoting public
-            transportation as an alternative to private cars.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Our Services</h2>
-        <ul>
-          <li>
-            <strong>Daily Cross-Country Bus Routes:</strong> Connecting major
-            cities and towns with frequent and reliable schedules.
-          </li>
-          <li>
-            <strong>Luxury Bus Services:</strong> For those seeking an elevated
-            travel experience with premium amenities.
-          </li>
-          <li>
-            <strong>Charter Services:</strong> Customized transportation
-            solutions for groups, events, and corporate travel.
-          </li>
-          <li>
-            <strong>Package Delivery:</strong> Affordable and reliable delivery
-            services for parcels and packages.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Get in Touch</h2>
-        <p>
-          Ready to plan your next trip? Have questions or feedback? We’d love to
-          hear from you!
-        </p>
-        <ul>
-          <li><strong>Phone:</strong> [Insert contact number]</li>
-          <li>
-            <strong>Email:</strong>
-            <a href="mailto:[Insert email address]">[Insert email address]</a>
-          </li>
-          <li>
-            <strong>Social Media:</strong> Follow us on [social media platforms]
-          </li>
-        </ul>
-      </section>
+    <div
+      class="container d-flex justify-content-center align-items-center vh-100"
+    >
+      <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px">
+        <h2 class="text-center mb-4">Log In</h2>
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <input type="checkbox" id="remember" class="form-check-input" />
+              <label for="remember" class="form-check-label">Remember me</label>
+            </div>
+            <a href="#" class="small">Forgot password?</a>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </div>
+          <div class="text-center mt-3">
+            <small
+              >Don't have an account? <a href="./signup.html">Sign up</a></small
+            >
+          </div>
+        </form>
+      </div>
     </div>
-    <p class="text-center py-4">
-      Thank you for choosing Travel Link. Let’s create unforgettable travel
-      memories together!
-    </p>
-
+    <div class="col-lg-4 text-center">
+        <div class="card shadow-lg p-4">
+            <img src="./assets/image/icons/profile.png" alt="Profile Picture" class="rounded-circle mb-3">
+            
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                Edit Profile
+            </button>
+        </div>
+    </div>
+</div>
+</div>
     <footer class="bg-turquoise text-white">
       <div class="container">
         <div class="row py-5">
