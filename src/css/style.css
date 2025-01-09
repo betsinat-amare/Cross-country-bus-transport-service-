@@ -5,12 +5,15 @@
     flex-wrap: nowrap;            
     overflow-x: scroll;         
     margin-left: 80px; 
-    margin-bottom: 80px;            
+    margin-bottom: 200px;            
     padding: 10px 0;               
     scroll-behavior: smooth; 
         
   }
-  
+  .arrow{
+    width: 300px;
+    height: 25px;
+  }
   /* Style for each individual card */
   #cardContainer .card {
     margin-right: 80px;           
