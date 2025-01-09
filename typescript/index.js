@@ -68,4 +68,8 @@ window.onload = function () {
       arrivalInput.value = arrivalCityEl.textContent;
       priceInput.value = priceText.textContent;
     });
+<<<<<<< Updated upstream
   };
+=======
+  };
+>>>>>>> Stashed changes
