@@ -1,60 +1,71 @@
 window.onload = function () {
-    // Hide the original card created in HTML
-    var originalCard = document.getElementById('originalCard');
-    if (originalCard) {
-        originalCard.style.display = 'none'; // Hide the first card
-    }
-    // Get the container where new cards will be appended
-    var cardContainer = document.getElementById('cardContainer');
-    if (!cardContainer) {
-        console.error("Card container element not found.");
-        return; // Exit if card container is missing
-    }
-    // An array of content for each card
-    var cardContent = [
-        { city1: "Adama", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Adama" },
-        { city1: "Addis Ababa", city2: "Hawassa" },
-        { city1: "Hawassa", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Gondor" },
-        { city1: "Gondor", city2: "Addis Ababa" },
-        { city1: "Bahir Dar", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Bahir Dar" },
-        { city1: "Addis Ababa", city2: "Harar" },
-        { city1: "Harar", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Jimma" },
-        { city1: "Jimma", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Debre Markos" },
-        { city1: "Debre Markos", city2: "Addis Ababa" },
-        { city1: "Sodo", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Sodo" },
-        { city1: "Mekele", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Mekele" },
-        { city1: "Addis Ababa", city2: "Yirga Chefe" },
-        { city1: "Yirga Chefe", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Adigrat" },
-        { city1: "Adigrat", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Gambela" },
-        { city1: "Gambela", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Debre Berhan" },
-        { city1: "Debre Berhan", city2: "Addis Ababa" },
-        { city1: "Shashemene", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Shashemene" },
-        { city1: "Addis Ababa", city2: "Robe" },
-        { city1: "Robe", city2: "Addis Ababa" },
-        { city1: "Addis Ababa", city2: "Dire dawa" },
-        { city1: "Dire dawa", city2: "Addis Ababa" },
+    const cardContainer = document.getElementById("cardContainer");
+    const thirdCard = document.getElementById("thirdCard");
+    const departureCityEl = document.getElementById("departureCity");
+    const arrivalCityEl = document.getElementById("arrivalCity");
+    const priceText = document.getElementById("priceText");
+    const bookingForm = document.getElementById("bookingForm");
+    const departureInput = document.getElementById("departure");
+    const arrivalInput = document.getElementById("arrival");
+
+    const cardContent = [
+      { city1: "Addis Ababa", city2: "Adama", price: "300 ETB" },
+      { city1: "Addis Ababa", city2: "Hawassa", price: "500 ETB" },
+      { city1: "Addis Ababa", city2: "Jimma", price: "1,050 ETB" },
+      { city1: "Addis Ababa", city2: "Gondar", price: "800 ETB" },
+      { city1: "Addis Ababa", city2: "Bahir Dar", price: "600 ETB" },
+      { city1: "Addis Ababa", city2: "Harar", price: "400 ETB" },
+      { city1: "Addis Ababa", city2: "Debre Markos", price: "350 ETB" },
+      { city1: "Addis Ababa", city2: "Mekele", price: "750 ETB" },
+      { city1: "Addis Ababa", city2: "Yirga Chefe", price: "450 ETB" },
+      { city1: "Addis Ababa", city2: "Adigrat", price: "700 ETB" },
+      { city1: "Addis Ababa", city2: "Gambela", price: "1,200 ETB" },
+      { city1: "Addis Ababa", city2: "Debre Berhan", price: "500 ETB" },
+      { city1: "Addis Ababa", city2: "Shashemene", price: "550 ETB" },
+      { city1: "Addis Ababa", city2: "Robe", price: "650 ETB" },
+      { city1: "Addis Ababa", city2: "Dire Dawa", price: "800 ETB" },
     ];
-    // Generate and append the new cards
-    cardContent.forEach(function (content) {
-        var card = document.createElement('div');
-        card.className = 'card col-md-4 mb-4';
-        card.style.width = '18rem';
-        // Set the card content dynamically from the array
-        card.innerHTML = "\n        <div class=\"card-body\">\n          <p>".concat(content.city1, "</p>\n          <div class=\"icon\">\n            <img\n              src=\"./assets/image/icon/material-symbols_line-start-arrow-notch-rounded.png\"\n              alt=\"Arrow Icon\"\n            />\n          </div>\n          <p>").concat(content.city2, "</p>\n        </div>\n      ");
-        // Append the card to the container
-        cardContainer.appendChild(card);
+
+    cardContent.forEach((content) => {
+      const card = document.createElement("div");
+      card.className = "card col-md-4 m-3 p-3 border shadow";
+      card.style.cursor = "pointer";
+
+      card.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 120px;">
+          <p style="margin: 0;">
+            <strong>${content.city1}</strong>
+          </p>
+          <img
+            src="./assets/image/icon/material-symbols_line-start-arrow-notch-rounded.png"
+            alt="Arrow Icon"
+            style="width: 20px; height: 20px;"
+          />
+          <p style="margin: 0;">
+            <strong>${content.city2}</strong>
+          </p>
+        </div>
+      `;
+
+      // Card click behavior
+      card.addEventListener("click", () => {
+        cardContainer.style.display = "none"; // Hide all cards
+        thirdCard.style.display = "block"; // Show the "Book Ticket Here" section
+        departureCityEl.textContent = content.city1;
+        arrivalCityEl.textContent = content.city2;
+        priceText.textContent = content.price;
+      });
+
+      cardContainer.appendChild(card);
     });
-    // Show the card container with the new cards
-    cardContainer.style.display = 'flex';
-};
+
+    // "Book Ticket Here" button click behavior
+    const bookTicketButton = document.getElementById("bookTicketButton");
+    bookTicketButton.addEventListener("click", () => {
+      thirdCard.style.display = "none"; // Hide the "Book Ticket Here" section
+      bookingForm.style.display = "block"; // Show the booking form
+      departureInput.value = departureCityEl.textContent;
+      arrivalInput.value = arrivalCityEl.textContent;
+      priceInput.value = priceText.textContent;
+    });
+  };
