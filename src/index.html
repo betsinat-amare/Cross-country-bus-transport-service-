@@ -123,11 +123,19 @@
           <label for="payment" class="form-label">Payment Method</label>
           <select class="form-select" id="payment" required>
             <option value="" selected disabled>Choose payment method</option>
+
             <option value="cbe-birr">CBE Birr</option>
             <option value="telebirr">Telebirr</option>
           </select>
+          <button
+            type="button"
+            id="payButton"
+            class="btn btn-primary w-100 mt-3"
+          >
+            Pay
+          </button>
         </div>
-        <button type="submit" class="btn btn-success w-100">
+        <button type="submit" class="btn btn-primary w-100 mt-3">
           Submit Booking
         </button>
       </form>

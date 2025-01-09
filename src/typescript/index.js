@@ -1,4 +1,4 @@
-
+console.log("Script loaded")
 window.onload = function () {
   const cardContainer = document.getElementById("cardContainer");
   const thirdCard = document.getElementById("thirdCard");
