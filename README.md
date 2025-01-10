@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Cross_country_bus_transport_service 
 ## Group Members
 
@@ -9,7 +8,6 @@
 | Selamawit Fikru         | UGR/9724/15 |
 | Selome  Wondimneh       | UGR/1372/15 |
 |  Dawit Mekonnen         | UGR/3391/13 |
-=======
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
@@ -109,4 +107,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
->>>>>>> backend
