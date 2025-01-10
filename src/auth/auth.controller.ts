@@ -1,4 +1,4 @@
-import { Controller, Post ,Body, HttpCode, HttpStatus, UseGuards,Req, Request} from '@nestjs/common';
+import { Controller, Post ,Body, HttpCode, HttpStatus, UseGuards,Req, Request, Put} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto,SingInDto } from './dto';
 import {Tokens} from './types'
@@ -47,7 +47,20 @@ export class AuthController {
         const user= req.user;
 
         return this.authService.refreshTokens(user['id'],user['refreshToken'])
+
+
+
     }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Put('update')
+    @HttpCode(HttpStatus.OK)
+    async updateUserProfile(@Req()req:ExpressRequest,@Body()data:any){
+        const user= req.user;
+
+        return this.authService.updateUserProfile(user['id'], data)
+    }
+    
     
     
 

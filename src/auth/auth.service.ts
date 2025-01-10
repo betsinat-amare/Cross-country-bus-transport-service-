@@ -107,7 +107,7 @@ export class AuthService {
             hashedRt:null,
         }
         
-     })
+     });
 
     }
 
@@ -125,6 +125,19 @@ async refreshTokens(userId:number,rtToken:string){
         const tokens=await this.getTokens(user.id, user.firstName ,user.email)
         await this.updateRtHash (user.id,tokens.refresh_token)
         return tokens;
+}
+async updateUserProfile(userId:number,data:any){
+    return await this.prisma.user.update({
+        where:{id:userId},
+    data:{
+        firstName:data.firstName,
+        middleName:data.middleName,
+        lastName:data.lastName,
+        phoneNumber:data.phoneNumber,
+        email:data.email,
+        hash:data.password,} 
+});
+    
 }
 
 }
