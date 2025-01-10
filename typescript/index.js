@@ -1,4 +1,4 @@
-window.onload = async function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const cardContainer = document.getElementById("cardContainer");
   const thirdCard = document.getElementById("thirdCard");
   const departureCityEl = document.getElementById("departureCity");
@@ -8,7 +8,11 @@ window.onload = async function () {
   const arrivalInput = document.getElementById("arrival");
   const priceInput = document.getElementById("price");
 
-  // Fetch data from backend API
+  if (!cardContainer) {
+    console.error("Card container not found");
+    return;
+  }
+
   try {
     const response = await fetch("http://localhost:8000/routes");
     if (!response.ok) {
@@ -17,7 +21,11 @@ window.onload = async function () {
 
     const routes = await response.json();
 
-    // Generate cards dynamically from fetched data
+    if (!routes || routes.length === 0) {
+      cardContainer.textContent = "No routes found.";
+      return;
+    }
+
     routes.forEach((route) => {
       const card = document.createElement("div");
       card.className = "card col-md-4 m-3 p-3 border shadow";
@@ -25,31 +33,18 @@ window.onload = async function () {
 
       card.innerHTML = `
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 120px;">
-          <p style="margin: 0;">
-            <strong>${route.departure}</strong>
-          </p>
-          <img
-            src="./assets/image/Vector (4).png"
-            alt="Arrow Icon"
-            style="width: 20px; height: 20px;"
-          />
-          <p style="margin: 0;">
-            <strong>${route.destination}</strong>
-          </p>
+          <p style="margin: 0;"><strong>${route.departure}</strong></p>
+          <img src="./assets/image/Vector (4).png" alt="Arrow Icon" style="width: 20px; height: 20px;" />
+          <p style="margin: 0;"><strong>${route.destination}</strong></p>
         </div>
       `;
 
-      // Add event listener to handle card click
       card.addEventListener("click", () => {
         cardContainer.style.display = "none";
         thirdCard.style.display = "block";
 
-        // Update thirdCard content dynamically
         departureCityEl.textContent = route.departure;
-        const timeAndDateHTML = `
-          ${route.time || "N/A"}
-        `;
-        departureCityEl.nextElementSibling.innerHTML = timeAndDateHTML; 
+        departureCityEl.nextElementSibling.innerHTML = route.time || "N/A";
         priceText.textContent = `Price: ${route.price} ETB`;
       });
 
@@ -57,20 +52,10 @@ window.onload = async function () {
     });
   } catch (error) {
     console.error("Error fetching card data:", error);
+    cardContainer.textContent = "Failed to load routes.";
   }
+});
 
-  // Handle "Book Ticket" button click
-  const bookTicketButton = document.getElementById("bookTicketButton");
-  if (bookTicketButton) {
-    bookTicketButton.addEventListener("click", () => {
-      thirdCard.style.display = "none";
-      bookingForm.style.display = "block";
-      departureInput.value = departureCityEl.textContent || "";
-      arrivalInput.value = departureCityEl.nextElementSibling.textContent || "";
-      priceInput.value = priceText.textContent.replace("Price: ", "") || "";
-    });
-  }
-};
 
 
 

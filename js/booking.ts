@@ -10,11 +10,7 @@ document.getElementById('booking-form')?.addEventListener('submit', async (e) =>
     busRouteId: parseInt((document.getElementById('booking-busRouteId') as HTMLInputElement).value, 10),
   };
   try {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      throw new Error('User not authenticated');
-    }
-    const response = await createBooking(formData, token);
+    const response = await createBooking(formData);
     console.log('Booking successful:', response);
   } catch (error) {
     console.error('Booking error:', error);
