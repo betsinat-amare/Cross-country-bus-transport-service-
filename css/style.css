@@ -11,13 +11,37 @@ body {
 header {
     background-color: #007B7D;
     color: #FFFFFF;
-    padding: 48px 20px;
+    padding: 80px 20px;
+   
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.rounded-circle  {
+    width: 100px;
 
+}
+.profile-container {
+    position: absolute;
+    top: 120px; 
+    right: 0; 
+    z-index: 10;
+    left: 1250px; 
+  }
+  
+ .btn-outline-primary{
+    background-color: #007B7D;
+    color: #FFFFFF;
+ } 
+ .btn-outline-primary:hover{
+    background-color:#FFFFFF ;
+    color: #2d5b5b;
+    border:2px solid #005F5F;
+ }
+ .btn-outline-primary:active{
+    background-color: #A0E3E3;
+ }
 /* Navbar Styles */
 .navbar-collapse {
     display: flex;
