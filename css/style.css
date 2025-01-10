@@ -21,16 +21,15 @@ header {
 .rounded-circle {
     width: 100px;
 }
-
 .profile-container {
     position: absolute;
     top: 120px;
     right: 0;
     z-index: 10;
-    left: 1250px;
-}
-
-.btn-outline-primary {
+    left: 1250px; 
+  }
+  
+ .btn-outline-primary{
     background-color: #007B7D;
     color: #FFFFFF;
 }
