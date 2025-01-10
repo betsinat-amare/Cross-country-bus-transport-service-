@@ -25,9 +25,9 @@ body {
 }
 
 .form-text {
-    color: red;
+    color: black;
     font-size: 0.9rem;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
 .hidden {

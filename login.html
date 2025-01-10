@@ -38,6 +38,19 @@
         </div>
     </form>
 </div>
+<!-- Profile Page -->
+<div id="profilePage" class="card hidden">
+    <div class="profile-circle" id="profilePicture"></div>
+    <div class="text-center mb-3">
+        <h4 id="displayName"></h4>
+        <p id="displayEmail"></p>
+        <p id="displayPhone"></p>
+    </div>
+    <div class="d-flex justify-content-between">
+        <button type="button" id="logoutButton" class="btn btn-secondary">Log Out</button>
+        <button type="button" id="editButton" class="btn btn-primary">Edit Info</button>
+    </div>
+</div>
 
 <!-- Sign Up Page -->
 <div id="signupPage" class="card hidden">
@@ -66,7 +79,7 @@
         <div class="mb-3">
             <label for="confirmPassword" class="form-label">Confirm Password</label>
             <input type="password" id="confirmPassword" class="form-control" required>
-            <div class="form-text">Confirmation doesn't match.</div>
+           
         </div>
         <div class="d-flex justify-content-between mb-3">
             <a href="#" id="goToLogin" class="text-decoration-none">Login</a>
