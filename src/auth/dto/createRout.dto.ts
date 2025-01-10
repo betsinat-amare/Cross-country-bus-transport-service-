@@ -1,4 +1,4 @@
-import { IsArray, IsBoolean, IsNotEmpty, IsNumber, IsString, IsTimeZone, ValidateNested} from "class-validator"
+import { IsArray, IsBoolean, IsDateString, IsNotEmpty, IsNumber, IsString, IsTimeZone, ValidateNested} from "class-validator"
 import { Booking} from "@prisma/client"
 import { Type } from "class-transformer";
 
@@ -33,7 +33,7 @@ export class CreatRoutDto{
 @IsNumber()
     seats:number
 
-@IsTimeZone()
+@IsDateString()
 @IsNotEmpty()
   departureTime:string
 @IsString()
