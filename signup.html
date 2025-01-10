@@ -4,45 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link
-      href="./css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <header class="d-flex align-items-center bg-turquoise p-3">
-      <a href="./Home.html"
-        ><img
+      <a href="./Home.html">
+        <img
           src="./assets/image/Logo.png"
           alt="Logo"
           class="img-fluid"
           style="max-width: 80px"
-      /></a>
-      <nav class="ml-auto">
+        />
+      </a>
+      <nav class="ml-auto d-none d-md-block">
         <ul class="d-flex list-unstyled">
           <li class="mx-3"><a href="./Home.html" class="nav-link">HOME</a></li>
-          <li class="mx-3">
-            <a href="./about.html" class="nav-link">ABOUT US</a>
-          </li>
-          <li class="mx-3">
-            <a href="./src/index.html" class="nav-link">ROUTE</a>
-          </li>
-          <li class="mx-3">
-            <a href="./contact.html" class="nav-link">CONTACT</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signup.html" class="nav-link">SIGN UP</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signin.html" class="nav-link">SIGN IN</a>
-          </li>
+          <li class="mx-3"><a href="./about.html" class="nav-link">ABOUT US</a></li>
+          <li class="mx-3"><a href="./src/index.html" class="nav-link">ROUTE</a></li>
+          <li class="mx-3"><a href="./contact.html" class="nav-link">CONTACT</a></li>
+          <li class="mx-3"><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+          <li class="mx-3"><a href="./signin.html" class="nav-link">SIGN IN</a></li>
         </ul>
       </nav>
+      <button id="menu-toggle" class="menu-toggle d-md-none">☰</button>
     </header>
+
+    <div id="sidebar" class="sidebar">
+      <ul class="list-unstyled">
+        <li><a href="./Home.html" class="nav-link">HOME</a></li>
+        <li><a href="./about.html" class="nav-link">ABOUT US</a></li>
+        <li><a href="./src/index.html" class="nav-link">ROUTE</a></li>
+        <li><a href="./contact.html" class="nav-link">CONTACT</a></li>
+        <li><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+        <li><a href="./signin.html" class="nav-link">SIGN IN</a></li>
+      </ul>
+    </div>
+
     <div class="container d-flex justify-content-center align-items-center vh-100">
-      <div class="card shadow-lg p-4">
-        <h2 class="text-center mb-4">Sign up</h2>
+      <div class="card shadow-lg p-4" style="width: 100%; max-width: 600px">
+        <h2 class="text-center mb-4">Sign Up</h2>
         <form>
           <!-- Name Row -->
           <div class="row mb-3">
@@ -92,7 +93,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="confirmPassword">Confirm Passw</label>
+              <label for="confirmPassword">Confirm Password *</label>
               <input
                 type="password"
                 class="form-control"
@@ -111,13 +112,12 @@
 
           <!-- Login Link -->
           <div class="text-center mt-3">
-            <small
-              >Already have an account?
-              <a href="./signin.html">Sign in</a></small>
+            <small>Already have an account? <a href="./signin.html">Sign in</a></small>
           </div>
         </form>
       </div>
     </div>
+
     <footer class="bg-turquoise text-white">
       <div class="container">
         <div class="row py-5">
@@ -180,27 +180,28 @@
           <div class="col-md-12 text-center">
             <h3 class="text-uppercase">Follow Us</h3>
             <div class="social-icons mb-3">
-              <a href="#"
-                ><img src="./assets/icons/facebook-brands-solid.svg" alt=""
-              /></a>
-              <a href="#"
-                ><img
-                  src="./assets/icons/instagram-brands-solid (1).svg"
-                  alt=""
-              /></a>
-              <a href="#"
-                ><img src="./assets/icons/linkedin-brands-solid (1).svg" alt=""
-              /></a>
-              <a href="#"
-                ><img
-                  src="./assets/icons/x-twitter-brands-solid (1).svg"
-                  alt=""
-              /></a>
+              <a href="#"><img src="./assets/icons/facebook-brands-solid.svg" alt="" /></a>
+              <a href="#"><img src="./assets/icons/instagram-brands-solid (1).svg" alt="" /></a>
+              <a href="#"><img src="./assets/icons/linkedin-brands-solid (1).svg" alt="" /></a>
+              <a href="#"><img src="./assets/icons/x-twitter-brands-solid (1).svg" alt="" /></a>
             </div>
             <p class="caption">© 2025 TravelLink. All Rights Reserved.</p>
           </div>
         </div>
       </div>
     </footer>
+
+    <script>
+      document.getElementById("menu-toggle").addEventListener("click", function () {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+      });
+
+      document.getElementById("sidebar").addEventListener("click", function () {
+        this.style.height = this.classList.contains("active") ? "50%" : "100%";
+        this.style.width = this.classList.contains("active") ? "150px" : "250px";
+      });
+    </script>
+    
   </body>
 </html>

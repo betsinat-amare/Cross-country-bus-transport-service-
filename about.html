@@ -9,34 +9,40 @@
   </head>
   <body>
     <header class="d-flex align-items-center bg-turquoise p-3">
-      <a href="./Home.html"
-        ><img
-          src="./assets/image/image.png"
+      <a href="./Home.html">
+        <img
+          src="./assets/image/Logo.png"
           alt="Logo"
           class="img-fluid"
           style="max-width: 80px"
-      /></a>
-      <nav class="ml-auto">
+        />
+      </a>
+      <nav class="ml-auto d-none d-md-block">
         <ul class="d-flex list-unstyled">
           <li class="mx-3"><a href="./Home.html" class="nav-link">HOME</a></li>
-          <li class="mx-3">
-            <a href="./about.html" class="nav-link">ABOUT US</a>
-          </li>
-          <li class="mx-3">
-            <a href="./src/index.html" class="nav-link">ROUTE</a>
-          </li>
-          <li class="mx-3">
-            <a href="./contact.html" class="nav-link">CONTACT</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signup.html" class="nav-link">SIGN UP</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signin.html" class="nav-link">SIGN IN</a>
-          </li>
+          <li class="mx-3"><a href="./about.html" class="nav-link">ABOUT US</a></li>
+          <li class="mx-3"><a href="./src/index.html" class="nav-link">ROUTE</a></li>
+          <li class="mx-3"><a href="./contact.html" class="nav-link">CONTACT</a></li>
+          <li class="mx-3"><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+          <li class="mx-3"><a href="./signin.html" class="nav-link">SIGN IN</a></li>
         </ul>
       </nav>
+      <button id="menu-toggle" class="menu-toggle d-md-none">
+        ☰
+      </button>
     </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <ul class="list-unstyled">
+        <li><a href="./Home.html" class="nav-link">HOME</a></li>
+        <li><a href="./about.html" class="nav-link">ABOUT US</a></li>
+        <li><a href="./src/index.html" class="nav-link">ROUTE</a></li>
+        <li><a href="./contact.html" class="nav-link">CONTACT</a></li>
+        <li><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+        <li><a href="./signin.html" class="nav-link">SIGN IN</a></li>
+      </ul>
+    </div>
     <div class="container my-5">
       <section>
         <h2 class="text-center">Who We Are</h2>
@@ -140,6 +146,7 @@
         </ul>
       </section>
     </div>
+
     <p class="text-center py-4">
       Thank you for choosing Travel Link. Let’s create unforgettable travel
       memories together!
@@ -208,9 +215,7 @@
             <h3 class="text-uppercase">Follow Us</h3>
             <div class="social-icons mb-3">
               <a href="#"
-                ><img
-                  src="./assets/image/icons/facebook-brands-solid.svg"
-                  alt=""
+                ><img src="./assets/image/icons/facebook-brands-solid.svg" alt=""
               /></a>
               <a href="#"
                 ><img
@@ -218,9 +223,7 @@
                   alt=""
               /></a>
               <a href="#"
-                ><img
-                  src="./assets/image/icons/linkedin-brands-solid (1).svg"
-                  alt=""
+                ><img src="./assets/image/icons/linkedin-brands-solid (1).svg" alt=""
               /></a>
               <a href="#"
                 ><img
@@ -233,5 +236,16 @@
         </div>
       </div>
     </footer>
+    <script>
+      document.getElementById("menu-toggle").addEventListener("click", function () {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+      });
+    
+      document.getElementById("sidebar").addEventListener("click", function () {
+        this.style.height = this.classList.contains("active") ? "50%" : "100%";
+        this.style.width = this.classList.contains("active") ? "150px" : "250px";
+      });
+    </script>
   </body>
 </html>

@@ -9,34 +9,39 @@
   </head>
   <body>
     <header class="d-flex align-items-center bg-turquoise p-3">
-      <a href="./Home.html"
-        ><img
+      <a href="./Home.html">
+        <img
           src="./assets/image/Logo.png"
           alt="Logo"
           class="img-fluid"
           style="max-width: 80px"
-      /></a>
-      <nav class="ml-auto">
+        />
+      </a>
+      <nav class="ml-auto d-none d-md-block">
         <ul class="d-flex list-unstyled">
           <li class="mx-3"><a href="./Home.html" class="nav-link">HOME</a></li>
-          <li class="mx-3">
-            <a href="./about.html" class="nav-link">ABOUT US</a>
-          </li>
-          <li class="mx-3">
-            <a href="../src/index.html" class="nav-link">ROUTE</a>
-          </li>
-          <li class="mx-3">
-            <a href="./contact.html" class="nav-link">CONTACT</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signup.html" class="nav-link">SIGN UP</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signin.html" class="nav-link">SIGN IN</a>
-          </li>
+          <li class="mx-3"><a href="./about.html" class="nav-link">ABOUT US</a></li>
+          <li class="mx-3"><a href="../src/index.html" class="nav-link">ROUTE</a></li>
+          <li class="mx-3"><a href="./contact.html" class="nav-link">CONTACT</a></li>
+          <li class="mx-3"><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+          <li class="mx-3"><a href="./signin.html" class="nav-link">SIGN IN</a></li>
         </ul>
       </nav>
+      <button id="menu-toggle" class="menu-toggle d-md-none">
+        ☰
+      </button>
     </header>
+
+    <div id="sidebar" class="sidebar">
+      <ul class="list-unstyled">
+        <li><a href="./Home.html" class="nav-link">HOME</a></li>
+        <li><a href="./about.html" class="nav-link">ABOUT US</a></li>
+        <li><a href="../src/index.html" class="nav-link">ROUTE</a></li>
+        <li><a href="./contact.html" class="nav-link">CONTACT</a></li>
+        <li><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+        <li><a href="./signin.html" class="nav-link">SIGN IN</a></li>
+      </ul>
+    </div>
 
     <section class="hero">
       <div class="hero-content">
@@ -112,7 +117,8 @@
         <div class="row py-5">
           <div class="col-md-4 text-center">
             <a href="./Home.html">
-              <img width="100px"
+              <img
+                width="100px"
                 src="./assets/image/Logo.png"
                 alt="Logo"
                 class="img-fluid mb-3"
@@ -125,7 +131,7 @@
             <ul class="list-unstyled">
               <li><a href="./Home.html" class="text-white">Home</a></li>
               <li><a href="./about.html" class="text-white">About Us</a></li>
-              <li><a href="./src/index.html" class="text-white">Route</a></li>
+              <li><a href="../src/index.html" class="text-white">Route</a></li>
               <li><a href="./contact.html" class="text-white">Contact</a></li>
               <li><a href="./signup.html" class="text-white">Sign Up</a></li>
               <li><a href="./signin.html" class="text-white">Sign In</a></li>
@@ -192,6 +198,11 @@
       </div>
     </footer>
 
-    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById("menu-toggle").addEventListener("click", function () {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>
