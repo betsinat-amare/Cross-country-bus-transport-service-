@@ -3,97 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
     <header class="d-flex align-items-center bg-turquoise p-3">
-      <a href="./Home.html"
-        ><img
-          src="./assets/image/image.png"
-          alt="Logo"
-          class="img-fluid"
-          style="max-width: 80px"
-      /></a>
+      <a href="./Home.html">
+        <img src="./assets/image/Logo.png" alt="Logo" class="img-fluid" style="max-width: 80px" />
+      </a>
       <nav class="ml-auto">
         <ul class="d-flex list-unstyled">
           <li class="mx-3"><a href="./Home.html" class="nav-link">HOME</a></li>
-          <li class="mx-3">
-            <a href="./about.html" class="nav-link">ABOUT US</a>
-          </li>
-          <li class="mx-3">
-            <a href="../src/index.html" class="nav-link">ROUTE</a>
-          </li>
-          <li class="mx-3">
-            <a href="./contact.html" class="nav-link">CONTACT</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signup.html" class="nav-link">SIGN UP</a>
-          </li>
-          <li class="mx-3">
-            <a href="./signin.html" class="nav-link">SIGN IN</a>
-          </li>
+          <li class="mx-3"><a href="./about.html" class="nav-link">ABOUT US</a></li>
+          <li class="mx-3"><a href="../src/index.html" class="nav-link">ROUTE</a></li>
+          <li class="mx-3"><a href="./contact.html" class="nav-link">CONTACT</a></li>
+          <li class="mx-3"><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+          <li class="mx-3"><a href="./signin.html" class="nav-link">SIGN IN</a></li>
         </ul>
       </nav>
     </header>
-    <div
-      class="container d-flex justify-content-center align-items-center vh-100"
-    >
-      <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px">
-        <h2 class="text-center mb-4">Log In</h2>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="card shadow-lg p-4" style="width: 100%; max-width: 600px">
+        <h2 class="text-center mb-4">Login</h2>
         <form>
           <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Enter your email"
-              required
-            />
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Phone" required />
           </div>
           <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Enter your password"
-              required
-            />
+            <label for="password" class="form-label">Password *</label>
+            <input type="password" class="form-control" id="password" placeholder="Password *" required />
           </div>
           <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
               <input type="checkbox" id="remember" class="form-check-input" />
               <label for="remember" class="form-check-label">Remember me</label>
             </div>
-            <a href="#" class="small">Forgot password?</a>
+            <a href="#" class="small">Forget password?</a>
           </div>
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Log In</button>
+          <div class="d-flex mb-3">
+            <a href="./Home.html" class="btn btn-cancel">Cancel</a>
+            <button type="submit" class="btn btn-primary ms-auto">Log in</button>
           </div>
           <div class="text-center mt-3">
-            <small
-              >Don't have an account? <a href="./signup.html">Sign up</a></small
-            >
+            <small>Don't have an account? <a href="./signup.html">Sign up</a></small>
           </div>
         </form>
       </div>
     </div>
-    <div
-      class="col-lg-4 d-flex flex-column align-items-center text-center profile-container"
-    >
-      <img
-        src="./assets/image/icons/profile.png"
-        alt="Profile Picture"
-        class="rounded-circle mb-3"
-      />
-      <button
-        class="btn btn-outline-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#editProfileModal"
-      >
+
+    <!-- Profile Section (if you want it included) -->
+    <div class="col-lg-4 d-flex flex-column align-items-center text-center profile-container">
+      <img src="./assets/image/icons/profile.png" alt="Profile Picture" class="rounded-circle mb-3" />
+      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
         Edit Profile
       </button>
     </div>
@@ -103,11 +67,7 @@
         <div class="row py-5">
           <div class="col-md-4 text-center">
             <a href="./Home.html">
-              <img
-                src="./assets/image/image.png"
-                alt="Logo"
-                class="img-fluid mb-3"
-              />
+              <img width="100px" src="./assets/image/Logo.png" alt="Logo" class="img-fluid mb-3" />
             </a>
             <p class="caption">YOUR TRUSTED TRAVEL PARTNER!</p>
           </div>
@@ -126,30 +86,18 @@
             <h3 class="text-uppercase">Contact</h3>
             <div class="contact-details">
               <div class="d-flex align-items-center mb-2">
-                <img
-                  src="./assets/image/icons/location_on_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
-                  alt=""
-                  class="me-2 icon-smaller"
-                />
+                <img src="./assets/icons/location_on_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="" class="me-2 icon-smaller" />
                 <p class="mb-0">King George VI St, Addis Ababa, Ethiopia</p>
               </div>
               <div class="d-flex align-items-center mb-2">
                 <a href="tel:+25100436787" class="text-white">
-                  <img
-                    src="./assets/image/icons/call_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
-                    alt=""
-                    class="me-2 icon-smaller"
-                  />
+                  <img src="./assets/icons/call_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="" class="me-2 icon-smaller" />
                   <span class="mb-0">+251 00 43 67 87</span>
                 </a>
               </div>
               <div class="d-flex align-items-center mb-2">
                 <a href="mailto:TravelLink@gmail.com" class="text-white">
-                  <img
-                    src="./assets/image/icons/mail_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
-                    alt=""
-                    class="me-2 icon-smaller"
-                  />
+                  <img src="./assets/icons/mail_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="" class="me-2 icon-smaller" />
                   <span class="mb-0">TravelLink@gmail.com</span>
                 </a>
               </div>
@@ -160,26 +108,10 @@
           <div class="col-md-12 text-center">
             <h3 class="text-uppercase">Follow Us</h3>
             <div class="social-icons mb-3">
-              <a href="#"
-                ><img
-                  src="./assets/image/icons/facebook-brands-solid.svg"
-                  alt=""
-              /></a>
-              <a href="#"
-                ><img
-                  src="./assets/image/icons/instagram-brands-solid (1).svg"
-                  alt=""
-              /></a>
-              <a href="#"
-                ><img
-                  src="./assets/image/icons/linkedin-brands-solid (1).svg"
-                  alt=""
-              /></a>
-              <a href="#"
-                ><img
-                  src="./assets/image/icons/x-twitter-brands-solid (1).svg"
-                  alt=""
-              /></a>
+              <a href="#"><img src="./assets/icons/facebook-brands-solid.svg" alt="" /></a>
+              <a href="#"><img src="./assets/icons/instagram-brands-solid (1).svg" alt="" /></a>
+              <a href="#"><img src="./assets/icons/linkedin-brands-solid (1).svg" alt="" /></a>
+              <a href="#"><img src="./assets/icons/x-twitter-brands-solid (1).svg" alt="" /></a>
             </div>
             <p class="caption">© 2025 TravelLink. All Rights Reserved.</p>
           </div>
