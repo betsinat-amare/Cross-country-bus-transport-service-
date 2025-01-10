@@ -13,11 +13,11 @@ export class AuthService {
     hashData(data){
         return bcrypt.hash(data,10);
     }
-    async getTokens(userId:number,fistName:string,email:string):Promise<Tokens>{
+    async getTokens(userId:number,firstName:string,email:string):Promise<Tokens>{
         const [accessToken, refreshToken] = await Promise.all([
             this.jwtService.signAsync(
                 {sub:userId,
-                 fistName,
+                 firstName,
                  email,
                 },
                 {
@@ -27,7 +27,7 @@ export class AuthService {
             ),
             this.jwtService.signAsync(
                 { sub:userId,
-                    fistName,
+                    firstName,
                     email,
                    },
                    {
@@ -49,7 +49,7 @@ export class AuthService {
 
         const newUser= this.prisma.user.create({
             data:{
-                fistName:dto.firstName,
+                firstName:dto.firstName,
                 middleName:dto.middleName,
                 lastName:dto.lastName,
                 phoneNumber:dto.phoneNumber,
@@ -61,7 +61,7 @@ export class AuthService {
 
             }
         });
-        const tokens=await this.getTokens((await newUser).id,(await newUser).fistName,(await newUser).email)
+        const tokens=await this.getTokens((await newUser).id,(await newUser).firstName,(await newUser).email)
         await this.updateRtHash((await newUser).id,tokens.refresh_token)
         return tokens;
     }
@@ -90,7 +90,7 @@ export class AuthService {
         const passwordMatches = await bcrypt.compare(dto.password,user.hash)
         if (!passwordMatches) throw new ForbiddenException('Access denid')
 
-        const tokens=await this.getTokens(user.id, user.fistName ,user.email)
+        const tokens=await this.getTokens(user.id, user.firstName ,user.email)
         await this.updateRtHash (user.id,tokens.refresh_token)
         return tokens;
     }
@@ -122,7 +122,7 @@ async refreshTokens(userId:number,rtToken:string){
        
         if(!tokenMatch) throw new ForbiddenException("Access Denied")
 
-        const tokens=await this.getTokens(user.id, user.fistName ,user.email)
+        const tokens=await this.getTokens(user.id, user.firstName ,user.email)
         await this.updateRtHash (user.id,tokens.refresh_token)
         return tokens;
 }

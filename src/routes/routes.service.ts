@@ -1,4 +1,4 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Body, Injectable,NotFoundException} from '@nestjs/common';
 import { CreatRoutDto } from 'src/auth/dto/createRout.dto';
 import {PrismaService} from '../prisma/prisma.service'
 import { BusRoute } from '@prisma/client';
@@ -40,14 +40,30 @@ async getRoute(departure:string, destination:string){
 async updateRoute(id:number,data:any) {
     return await this.prisma.busRoute.update({
         where:{id},
-        data,
+        data:{
+            destination:data.destination,
+            departure:data.departure,
+            departureTime:data.departureTime,
+            departureplace:data.departureplace,
+            price:data.price,
+            seats:data.seats,
+            isAvalaible:data.isAvalaible,
+        }
     });
 }
 // Delete a route by destination and departure
 async deleteRoute(id:number){
-    return await this.prisma.busRoute.delete({
+    const route = await this.prisma.busRoute.findUnique({
         where:{id},
     });
+    
+    if (!route){
+        throw new NotFoundException('Route not found');
+    }
+
+    return await this.prisma.busRoute.delete({
+        where:{id},
+    })
 
 }
 

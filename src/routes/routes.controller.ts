@@ -20,11 +20,8 @@ async getRoute(
 }
 
 @Put(':id')
- async updateRoute(@Param('id') id:number, @Body()data:any) {
-    return this.routeServices.updateRoute( {
-        where:{id},
-        data,
-    }) ;
+ async updateRoute(@Param('id') id:string, @Body()data:any) {
+    return this.routeServices.updateRoute(parseInt(id, 10),data) ;
 }
 
 @Post('create')
@@ -34,7 +31,7 @@ async createRoute(@Body() createRouteDto: CreatRoutDto) {
 
 
 @Delete(':id')
- async deleteRoute(id:number){
-    return this.routeServices.deleteRoute(id);
+ async deleteRoute(@Param('id')id:string){
+    return this.routeServices.deleteRoute(parseInt(id));
 }
 }
