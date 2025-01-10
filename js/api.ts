@@ -22,12 +22,11 @@ export const signin = async (userData: any) => {
   return response.json();
 };
 
-export const createBooking = async (bookingData: any, token: string) => {
+export const createBooking = async (bookingData: any) => {
   const response = await fetch(`${API_URL}/booking`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify(bookingData),
   });
