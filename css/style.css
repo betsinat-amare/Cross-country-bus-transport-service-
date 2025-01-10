@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: Arial, sans-serif; /* Retained from 'About' */
     background-color: #d7f2f2; /* Consistent background color */
@@ -6,8 +6,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* Header Styles */
 header {
     background-color: #007B7D;
     color: #FFFFFF;
@@ -43,8 +41,6 @@ header {
     color: #A0E3E3;
     text-decoration: underline;
 }
-
-/* Hero Section (from 'Home') */
 .hero {
     background-image: url('../assets/image/hero.png');
     background-size: cover;
@@ -74,18 +70,82 @@ header {
     font-size: 20px;
     padding: 0 200px;
 }
-
-/* Form and Button Styles */
 .contact-form .form-control,
 .booking-form {
     border: 2px solid #329999;
     border-radius: 20px;
     background-color: #d7f2f2;
 }
+  .card {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 24px;
+  }
+  .card h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.75rem;
+    text-align: center;
+  }
+  form .row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  form .form-group {
+    flex: 1;
+  }
 
-
-
-/* Footer Styles */
+  form .form-control {
+    border-radius: 5px;
+    height: 45px;
+  }
+  
+  form label {
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  form .btn {
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 20px;
+  }
+  
+  form .btn-cancel {
+    background: none;
+    border: none;
+    color: #6c757d;
+    text-decoration: underline;
+    margin-right: auto;
+    padding: 0;
+  }
+  
+  form .btn-primary {
+    background-color: #005F5F;
+    border-color: #005F5F;
+  }
+  
+  form .btn-primary:hover {
+    background-color: #005F5F;
+    border-color: #005F5F;
+  }
+  .text-center a {
+    color: #005F5F;
+    text-decoration: none;
+  }
+  
+  .text-center a:hover {
+    text-decoration: underline;
+  }
+.small{
+    color: #005F5F;
+}
 footer {
     background-color: #007B7D;
     color: #E0F4F4;
@@ -111,8 +171,6 @@ footer a:hover {
     color: #A0E3E3;
     text-decoration: underline;
 }
-
-/* Social Icons */
 .social-icons {
     display: flex;
     justify-content: center;
