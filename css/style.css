@@ -24,12 +24,14 @@ header {
     width: 100px;
 
 }
-.profile-container {
+
+
+  .profile-container{
     position: absolute;
     top: 120px; 
     right: 0; 
     z-index: 10;
-    left: 1250px; 
+    left: -800px; 
   }
   
  .btn-outline-primary{
