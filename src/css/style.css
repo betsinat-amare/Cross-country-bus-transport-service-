@@ -1,4 +1,7 @@
 /* Container holding all cards */
+body{
+  background-color: #d7f2f2;
+}
 #cardContainer {
     display: flex;
      margin-top: 200px;         

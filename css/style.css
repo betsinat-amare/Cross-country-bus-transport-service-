@@ -6,6 +6,10 @@ body {
     margin: 0;
     padding: 0;
 }
+html, body {
+    overflow-x: hidden; 
+}
+
 header {
     background-color: #007B7D;
     color: #FFFFFF;
@@ -84,6 +88,7 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 24px;
+    margin-top: 100px;
   }
   .card h2 {
     font-weight: 600;
@@ -146,24 +151,33 @@ header {
 .small{
     color: #005F5F;
 }
+.btn3{
+    background-color: #007B7D;
+    margin-top: 50px;
+}
 footer {
     background-color: #007B7D;
     color: #E0F4F4;
-    padding: 40px 0;
+    padding: 5px 0; 
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
+footer .row {
+    margin: 0;
+    padding: 0;
+}
+
 footer h3 {
     color: #FFFFFF;
-    margin-bottom: 10px;
-    font-size: 18px;
-    letter-spacing: 1px;
+    margin-bottom: 2px; 
+    letter-spacing: 0.3px; 
 }
 
 footer a {
     color: #FFFFFF;
     text-decoration: none;
+    font-size: 10px; 
     transition: color 0.3s, text-decoration 0.3s;
 }
 
@@ -171,15 +185,16 @@ footer a:hover {
     color: #A0E3E3;
     text-decoration: underline;
 }
+
 .social-icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 2px; 
 }
 
 .social-icons img {
-    width: 30px;
+    width: 14px; 
     filter: brightness(0) invert(1);
 }
 
@@ -188,25 +203,40 @@ footer a:hover {
     filter: brightness(0.8);
 }
 
+.caption {
+    font-size: 9px; 
+    margin-top: 2px; 
+}
+.profile-container {
+    position: absolute;
+    top: 120px; 
+    right: 0; 
+    z-index: 5;
+    left: 940px; 
+  }
+  .btn-outline-primary{
+    margin-right: 150px;
+    
+  }
 @media (max-width: 767px) {
     .navbar-nav {
-        flex-direction: column; /* Stack items vertically for smaller screens */
+        flex-direction: column; /
     }
 
     .navbar-toggler {
-        border-color: #A0E3E3; /* Change toggle button color */
+        border-color: #A0E3E3; 
     }
 
     .navbar-toggler-icon {
-        background-color: #A0E3E3; /* Change icon color */
+        background-color: #A0E3E3; 
     }
 
     .collapse {
-        background-color: #007B7D; /* Background color for the dropdown */
+        background-color: #007B7D; 
     }
 
     .nav-item {
-        padding: 10px; /* Add padding for clickable area */
+        padding: 10px; 
     }
 }
 

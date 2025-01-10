@@ -4,8 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - Cross Country Bus Transport Service</title>
-    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem; /* Adds spacing between the two form fields */
+      }
+
+      .form-group {
+        flex: 1; /* Ensures both fields take equal width */
+      }
+
+      .form-group input {
+        width: 100%; /* Ensures the input fields stretch to fit the container */
+      }
+    </style>
   </head>
   <body>
     <header class="d-flex align-items-center bg-turquoise p-3">
@@ -59,7 +74,7 @@
           <h5 class="text-center mb-4">Contact Form</h5>
           <form>
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group">
                 <label for="name">Name</label>
                 <input
                   type="text"
@@ -69,7 +84,7 @@
                   required
                 />
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group">
                 <label for="email">Email</label>
                 <input
                   type="email"
@@ -91,7 +106,7 @@
               ></textarea>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-submit px-4 py-2">
+              <button type="submit" class="btn btn-submit px-4 py-2 btn3">
                 Send Message
               </button>
             </div>
@@ -104,7 +119,7 @@
         <div class="row py-5">
           <div class="col-md-4 text-center">
             <a href="./Home.html">
-              <img
+              <img width="100px"
                 src="./assets/image/image.png"
                 alt="Logo"
                 class="img-fluid mb-3"
