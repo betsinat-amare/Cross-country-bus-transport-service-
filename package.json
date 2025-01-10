@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@types/minimatch": "^5.1.2",
+    "typescript": "^5.7.3"
+  }
+}
