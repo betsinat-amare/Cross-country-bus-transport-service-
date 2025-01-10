@@ -177,6 +177,10 @@ header {
     background-color: #007B7D;
     margin-top: 50px;
 }
+.profile{
+    border-radius: 20px;
+    margin-left: 150px;
+}
 footer {
     background-color: #007B7D;
     color: #E0F4F4;
