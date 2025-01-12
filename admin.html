@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Admin - Manage Routes</title>
+  </head>
+  <body>
+    <header class="d-flex align-items-center bg-turquoise p-3">
+      <a href="./Home.html">
+        <img src="./assets/image/Logo.png" alt="Logo" class="img-fluid" style="max-width: 80px" />
+      </a>
+      <nav class="ml-auto">
+        <ul class="d-flex list-unstyled">
+          <li class="mx-3"><a href="./Home.html" class="nav-link">HOME</a></li>
+          <li class="mx-3"><a href="./about.html" class="nav-link">ABOUT US</a></li>
+          <li class="mx-3"><a href="./index.html" class="nav-link">ROUTE</a></li>
+          <li class="mx-3"><a href="./contact.html" class="nav-link">CONTACT</a></li>
+          <li class="mx-3"><a href="./signup.html" class="nav-link">SIGN UP</a></li>
+          <li class="mx-3"><a href="./signin.html" class="nav-link">SIGN IN</a></li>
+          <li class="mx-3" id="profileMenu" style="display: none;">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="profileInitial"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="./profile.html">View Profile</a></li>
+                <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="admin">
+      <div class="container">
+        <h2>Manage Routes</h2>
+
+        <!-- Create Route Form -->
+        <form id="createRouteForm">
+          <h3>Create Route</h3>
+          <div class="mb-3">
+            <label for="createDeparture" class="form-label">Departure</label>
+            <input type="text" class="form-control" id="createDeparture" name="departure" required>
+          </div>
+          <div class="mb-3">
+            <label for="createDestination" class="form-label">Destination</label>
+            <input type="text" class="form-control" id="createDestination" name="destination" required>
+          </div>
+          <div class="mb-3">
+            <label for="createDepartureTime" class="form-label">Departure Time</label>
+            <input type="datetime-local" class="form-control" id="createDepartureTime" name="departureTime" required>
+          </div>
+          <div class="mb-3">
+            <label for="createDeparturePlace" class="form-label">Departure Place</label>
+            <input type="text" class="form-control" id="createDeparturePlace" name="departurePlace" required>
+          </div>
+          <div class="mb-3">
+            <label for="createPrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="createPrice" name="price" required>
+          </div>
+          <div class="mb-3">
+            <label for="createSeats" class="form-label">Seats</label>
+            <input type="number" class="form-control" id="createSeats" name="seats" required>
+          </div>
+          <div class="mb-3">
+            <label for="createIsAvailable" class="form-label">Is Available</label>
+            <select class="form-control" id="createIsAvailable" name="isAvailable" required>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Create Route</button>
+        </form>
+
+        <!-- Update Route Form -->
+        <form id="updateRouteForm" class="mt-5">
+          <h3>Update Route</h3>
+          <div class="mb-3">
+            <label for="updateRouteId" class="form-label">Route ID</label>
+            <input type="number" class="form-control" id="updateRouteId" name="id" required>
+          </div>
+          <div class="mb-3">
+            <label for="updateDeparture" class="form-label">Departure</label>
+            <input type="text" class="form-control" id="updateDeparture" name="departure" required>
+          </div>
+          <div class="mb-3">
+            <label for="updateDestination" class="form-label">Destination</label>
+            <input type="text" class="form-control" id="updateDestination" name="destination" required>
+          </div>
+          <div class="mb-3">
+            <label for="updateDepartureTime" class="form-label">Departure Time</label>
+            <input type="datetime-local" class="form-control" id="updateDepartureTime" name="departureTime" required>
+          </div>
+          <div class="mb-3">
+            <label for="updateDeparturePlace" class="form-label">Departure Place</label>
+            <input type="text" class="form-control" id="updateDeparturePlace" name="departurePlace" required>
+          </div>
+          <div class="mb-3">
+            <label for="updatePrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="updatePrice" name="price" required>
+          </div>
+          <div class="mb-3">
+            <label for="updateSeats" class="form-label">Seats</label>
+            <input type="number" class="form-control" id="updateSeats" name="seats" required>
+          </div>
+          <div class="mb-3">
+            <label for="updateIsAvailable" class="form-label">Is Available</label>
+            <select class="form-control" id="updateIsAvailable" name="isAvailable" required>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Route</button>
+        </form>
+
+        <!-- Delete Route Form -->
+        <form id="deleteRouteForm" class="mt-5">
+          <h3>Delete Route</h3>
+          <div class="mb-3">
+            <label for="deleteRouteId" class="form-label">Route ID</label>
+            <input type="number" class="form-control" id="deleteRouteId" name="id" required>
+          </div>
+          <button type="submit" class="btn btn-danger">Delete Route</button>
+        </form>
+
+        <!-- Assign Role Form -->
+        <form id="assignRoleForm" class="mt-5">
+          <h3>Assign Role</h3>
+          <div class="mb-3">
+            <label for="assignUserId" class="form-label">User ID</label>
+            <input type="number" class="form-control" id="assignUserId" name="userId" required>
+          </div>
+          <div class="mb-3">
+            <label for="assignRole" class="form-label">Role</label>
+            <select class="form-control" id="assignRole" name="role" required>
+              <option value="USER">User</option>
+              <option value="ADMIN">Admin</option>
+              <option value="SUPER_ADMIN">Super Admin</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Assign Role</button>
+        </form>
+      </div>
+    </section>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./typescript/admin.js"></script>
+    <script src="./typescript/index.js"></script>
+  </body>
+</html>

@@ -1,13 +1,13 @@
-import { IsString, IsNotEmpty, IsInt, IsPhoneNumber } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsPhoneNumber, IsString } from 'class-validator';
 
-export class CreateBookingDto {
+export class UpdateUserDto {
   @IsString()
   @IsNotEmpty()
   firstName: string;
 
   @IsString()
   @IsNotEmpty()
-  middleName: string;
+  middleName?: string;
 
   @IsString()
   @IsNotEmpty()
@@ -17,7 +17,7 @@ export class CreateBookingDto {
   @IsNotEmpty()
   phoneNumber: string;
 
-  @IsInt()
+  @IsEmail()
   @IsNotEmpty()
-  busRouteId: number;
+  email: string;
 }

@@ -1,4 +1,4 @@
-import { Controller, Post ,Body, HttpCode, HttpStatus, UseGuards,Req, Request, Put} from '@nestjs/common';
+import { Controller, Post ,Body, HttpCode, HttpStatus, UseGuards,Req, Request, Put,Param} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto,SingInDto } from './dto';
 import {Tokens} from './types'
@@ -7,7 +7,7 @@ import { ExpressRequest } from './types/expressRequest.interface';
 import { RolesGuard } from './guard/roles.guard';
 import { Roles } from './decorators/roles.decorator';
 import { Role } from '@prisma/client';
-@Controller('user')
+@Controller('auth')
 export class AuthController {
     constructor(private authService:AuthService){}
     @Post('signup')
@@ -21,6 +21,14 @@ export class AuthController {
     signin(@Body()dto:SingInDto):Promise<Tokens>{
         return this.authService.signin(dto)
     }
+    @UseGuards(AuthGuard('jwt'),RolesGuard)
+    @Roles(Role.ADMIN)
+    @Post('assign-role/:userId')
+    @HttpCode(HttpStatus.OK)
+    assginRole(@Param('userId') userId:number,@Body('role') role:Role){
+        return this.authService.assignRole(userId,role)
+    }
+
 
     @UseGuards(AuthGuard('jwt'),RolesGuard)
     @Roles(Role.ADMIN)
@@ -51,17 +59,4 @@ export class AuthController {
 
 
     }
-
-    @UseGuards(AuthGuard('jwt'))
-    @Put('update')
-    @HttpCode(HttpStatus.OK)
-    async updateUserProfile(@Req()req:ExpressRequest,@Body()data:any){
-        const user= req.user;
-
-        return this.authService.updateUserProfile(user['id'], data)
-    }
-    
-    
-    
-
 }

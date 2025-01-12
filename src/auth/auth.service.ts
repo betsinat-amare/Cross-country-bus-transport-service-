@@ -10,6 +10,8 @@ import { Role } from '@prisma/client';
 export class AuthService {
     constructor(private prisma:PrismaService,private jwtService:JwtService){}
 
+
+
     hashData(data){
         return bcrypt.hash(data,10);
     }
@@ -22,7 +24,7 @@ export class AuthService {
                 },
                 {
                    secret:'bustransport',
-                   expiresIn:'30m', 
+                   expiresIn:'30000000', 
                 },
             ),
             this.jwtService.signAsync(
@@ -32,7 +34,7 @@ export class AuthService {
                    },
                    {
                       secret:'bustransport',
-                      expiresIn:'7d', 
+                      expiresIn:'70000000000', 
                    },
 
                 
@@ -44,10 +46,10 @@ export class AuthService {
             refresh_token:refreshToken,
         }
     }
-    async signup(@Body() dto:SignUpDto):Promise<Tokens>{
+    async signup(@Body() dto:SignUpDto):Promise<any>{
         const hash= await this.hashData(dto.password);
 
-        const newUser= this.prisma.user.create({
+        const newUser= await this.prisma.user.create({
             data:{
                 firstName:dto.firstName,
                 middleName:dto.middleName,
@@ -63,8 +65,7 @@ export class AuthService {
         });
         const tokens=await this.getTokens((await newUser).id,(await newUser).firstName,(await newUser).email)
         await this.updateRtHash((await newUser).id,tokens.refresh_token)
-        return tokens;
-    }
+        return { ...tokens, user: newUser };    }
 
     async updateRtHash(userId:number, rt:string){
         const hash =await this.hashData(rt);
@@ -78,7 +79,7 @@ export class AuthService {
         })
     }
 
-    async signin(@Body() dto:SingInDto):Promise<Tokens>{
+    async signin(@Body() dto:SingInDto):Promise<any>{
         const user= await this.prisma.user.findUnique({
             where:{
                 email:dto.email
@@ -92,7 +93,7 @@ export class AuthService {
 
         const tokens=await this.getTokens(user.id, user.firstName ,user.email)
         await this.updateRtHash (user.id,tokens.refresh_token)
-        return tokens;
+        return { ...tokens, user: user };
     }
 
    async logout(userId:number){
@@ -138,6 +139,12 @@ async updateUserProfile(userId:number,data:any){
         hash:data.password,} 
 });
     
+}
+async assignRole(userId:number,role:Role){
+    return await this.prisma.user.update({
+        where:{id:userId},
+        data:{role},
+    })
 }
 
 }

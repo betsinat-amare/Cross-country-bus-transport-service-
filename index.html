@@ -36,6 +36,21 @@
           <li class="mx-3">
             <a href="./signin.html" class="nav-link">SIGN IN</a>
           </li>
+          <li class="mx-3" id="profileMenu" style="display:none;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="profiileInitial"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="./profile.html">View Profile</a></li>
+              <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
+
+            </ul>
+          </li>
+          <div>
+            <li class="mx-3" id="adminMenu" style="display: none;">
+              <a href="./admin.html" class="nav-link">ADMIN</a>
+            </li>
+          </div>
         </ul>
       </nav>
     </header>
@@ -64,7 +79,8 @@
           <!-- Departure -->
           <div class="col-6 text-center">
             <h5 id="departureCity" class="m-0"></h5>
-            <p class="m-0">3:30 AM <small>Friday, January 10, 2025</small></p>
+            <h5 id ="destinationCity"class="m-0"></h5>
+            <p id ="time" class="m-0"></p>
           </div>
           <!-- Travel Duration -->
           <div
@@ -77,19 +93,17 @@
             </span>
           </div>
 
-          <!-- <div class="col-4 text-center">
+          <div class="col-4 text-center">
             <h5 id="arrivalCity" class="m-0"></h5>
-            <p class="m-0">11:30 AM</p>
-
-            <small>Friday, January 10, 2025</small>
-          </div> -->
+            
+          </div>
         </div>
 
         <hr />
 
         <div class="text-center">
           <button class="btn btn-book btn-primary" id="bookTicketButton">
-            BOOK TICKET
+            BOOK TICmainKET
           </button>
         </div>
       </div>
@@ -98,63 +112,24 @@
     <!-- Booking Form (Initially hidden) -->
     <div class="container mt-5" id="bookingForm" style="display: none">
       <h2 class="text-center mb-4">Bus Booking Form</h2>
-      <form class="p-4 border rounded shadow">
+      <form id="bookingFormElement" class="p-4 border rounded shadow">
         <div class="mb-3">
-          <label for="name" class="form-label">First Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            placeholder="First name"
-            required
-          />
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName" placeholder="First name" required />
         </div>
         <div class="mb-3">
-          <label for="name" class="form-label">Last Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            placeholder="Last name"
-            required
-          />
+          <label for="middleName" class="form-label">Middle Name</label>
+          <input type="text" class="form-control" id="middleName" placeholder="Middle name" required />
         </div>
         <div class="mb-3">
-          <label for="contact" class="form-label">Phone Number</label>
-          <input
-            type="tel"
-            class="form-control"
-            id="contact"
-            placeholder="Enter your phone number"
-            required
-          />
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Last name" required />
         </div>
-
         <div class="mb-3">
-          <label for="payment" class="form-label">Payment Method</label>
-          <select class="form-select" id="payment" required>
-            <option value="" selected disabled>Choose payment method</option>
-
-            <option value="cbe-birr">CBE Birr</option>
-            <option value="telebirr">Telebirr</option>
-            <option value="telebirr">Amole</option>
-          </select>
-
-          <div class="button-group mt-3">
-            <button
-              class="btn btn-primary"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#termsModal"
-              id="submit"
-            >
-              Submit Booking
-            </button>
-            <button class="btn btn-book btn-primary" id="bookTicketButton">
-              Pay
-            </button>
-          </div>
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number" required />
         </div>
+        <button type="submit" class="btn btn-primary">Submit Booking</button>
       </form>
     </div>
 
@@ -163,8 +138,7 @@
       id="termsModal"
       tabindex="-1"
       aria-labelledby="termsModalLabel"
-      aria-hidden="true"
-    >
+      aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -246,8 +220,7 @@
             <button
               type="button"
               class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+              data-bs-dismiss="modal">
               Close
             </button>
             <button type="button" class="btn btn-primary">
@@ -267,8 +240,7 @@
                 width="100px"
                 src="./assets/image/Logo.png"
                 alt="Logo"
-                class="img-fluid mb-3"
-              />
+                class="img-fluid mb-3"/>
             </a>
             <p class="caption">YOUR TRUSTED TRAVEL PARTNER!</p>
           </div>
@@ -290,8 +262,7 @@
                 <img
                   src="./assets/icons/location_on_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
                   alt=""
-                  class="me-2 icon-smaller"
-                />
+                  class="me-2 icon-smaller"/>
                 <p class="mb-0">King George VI St, Addis Ababa, Ethiopia</p>
               </div>
               <div class="d-flex align-items-center mb-2">
@@ -343,7 +314,9 @@
         </div>
       </div>
     </footer>
-    <script src="./typescript/index.js"></script>
+    <script  src="./typescript/index.js"></script>
+    <script src="./typescript/admin.js"></script>
+    <script src="./typescript/profile.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

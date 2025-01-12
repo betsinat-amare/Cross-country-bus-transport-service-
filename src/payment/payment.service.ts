@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreatePaymentDto } from './dto/create-payment.dto';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 import {subDays} from 'date-fns';
 
 @Injectable()
@@ -35,24 +35,46 @@ export class PaymentService {
         status: 'pending',
       },
     });
-
-    const response = await axios.post('https://api.chapa.co/v1/transaction/initialize', {
-      amount,
-      currency: 'ETB',
-      email: booking.user.email,
-      first_name: booking.firstName,
-      last_name: booking.lastName,
-      tx_ref: `tx-${payment.id}`,
-      callback_url: 'http://localhost:8000/payment/callback',
-      return_url: 'http://localhost:8000/payment/success',
-    }, {
-      headers: {
-        Authorization: `Bearer ${process.env.CHAPA_SECRET_KEY}`,
+    const chapaPayload = {
+      amount: dto.amount,
+      currency: dto.currency,
+      email: dto.email,
+      first_name: dto.firstName,
+      last_name: dto.lastName,
+      phone_number: dto.phoneNumber,
+      tx_ref: `tx-${Date.now()}`,
+      callback_url: dto.callbackUrl,
+      return_url: dto.callbackUrl,
+      customizations: {
+        title: 'Bus Booking Payment',
+        description: `Payment for booking ID ${dto.bookingId}`,
       },
-    });
+    };
 
-    return response.data;
+    try{
+    const response = await axios.post('https://api.chapa.co/v1/transaction/initialize', chapaPayload ,{
+     headers:{
+            Authorization: `Bearer ${process.env.CHAPA_SECRET_KEY}`,
+            'Content-Type':'application/json',
+         },
+    });
+    if (response.data.status !== 'success') {
+      throw new Error('Failed to initialize payment');
+    }
+    return { checkout_url: response.data.data.checkout_url };
+     }catch (error) {
+      if (axios.isAxiosError(error)){
+        throw new Error(`Payment initialization failed: ${error.message}`);
+      }
+      throw new Error('An unexpected error occurred');
+      
+    }
   }
+
+   
+     // callback_url: 'http://localhost:8000/payment/callback',
+      //return_url: 'http://localhost:8000/payment/success',
+    
 
   async handleCallback(tx_ref: string, status: string) {
     const paymentId = parseInt(tx_ref.split('-')[1]);

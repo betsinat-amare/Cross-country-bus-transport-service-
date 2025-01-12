@@ -1,7 +1,12 @@
 import { IsInt, IsNotEmpty } from 'class-validator';
 
 export class CreatePaymentDto {
-  @IsInt()
-  @IsNotEmpty()
   bookingId: number;
+  amount: number;
+  currency: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  callbackUrl: string;
 }

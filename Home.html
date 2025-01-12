@@ -34,6 +34,20 @@
           <li class="mx-3">
             <a href="./signin.html" class="nav-link">SIGN IN</a>
           </li>
+          <li class="mx-3" id="profileMenu" style="display: none;">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="profileInitial"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="./profile.html">View Profile</a></li>
+                <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="mx-3" id="adminMenu" style="display: none;">
+            <a href="./admin.html" class="nav-link">ADMIN</a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -59,41 +73,21 @@
         <div class="row">
           <div class="col-md-6">
             <div class="booking-form">
-              <label for="from">Leaving from:</label>
-              <select id="from" class="form-control">
-                <option value="">Select a City or Station</option>
-                <option value="Addis Ababa">Addis Ababa</option>
-                <option value="Adama">Adama</option>
-                <option value="Hawassa">Hawassa</option>
-                <option value="Gonder">Gonder</option>
-                <option value="Bahir Dar">Bahir Dar</option>
-                <option value="Harar">Harar</option>
-                <option value="Jimma">Jimma</option>
-                <option value="Dire Dawa">Dire Dawa</option>
-              </select>
+              <form id="searchForm">
+                <label for="from">Leaving from:</label>
+               <input type="text" id="fromText" class="form-control mt-2" placeholder="Enter a city or station" />
 
-              <label for="to">Destination:</label>
-              <select id="to" class="form-control">
-                <option value="">Select a City or Station</option>
-                <option value="Addis Ababa">Addis Ababa</option>
-                <option value="Adama">Adama</option>
-                <option value="Hawassa">Hawassa</option>
-                <option value="Gonder">Gonder</option>
-                <option value="Bahir Dar">Bahir Dar</option>
-                <option value="Harar">Harar</option>
-                <option value="Jimma">Jimma</option>
-                <option value="Dire Dawa">Dire Dawa</option>
-              </select>
-
-              <label for="date">Departure date:</label>
+                <label for="to">Destination:</label>
+                <input type="text" id="toText" class="form-control mt-2" placeholder="Enter a city or station" />
+             <!--<label for="date">Departure date:</label>
               <input
                 type="datetime-local"
                 id="date"
                 class="form-control"
                 name="date"
-              />
+              />--> 
 
-              <button class="btn btn-primary mt-3">Search</button>
+              <button type="submit" class="btn btn-primary mt-3">Search</button>
             </div>
           </div>
           <div class="col-md-6">
@@ -106,7 +100,13 @@
         </div>
       </div>
     </section>
-
+   <!--
+    <section id="routes" class="mt-5">
+      <div class="container">
+        <div id="cardContainer" class="row"></div>
+      </div>
+    </section>
+    --> 
     <footer class="bg-turquoise text-white">
       <div class="container">
         <div class="row py-5">
@@ -193,6 +193,28 @@
       </div>
     </footer>
 
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        console.log(user, 'the user')
+
+        const profileMenu = document.getElementById("profileMenu");
+        const profileInitial = document.getElementById("profileInitial");
+        const adminMenu = document.getElementById("adminMenu");
+
+        if (user === undefined) {
+          console.error("User not logged in or token missing.");
+          window.location.href = "./signin.html";
+        }
+        profileMenu.style.display = "block";
+        profileInitial.textContent = user?.firstName?.charAt(0).toUpperCase() || "U";
+
+
+        if (user?.role === 'ADMIN') {
+          adminMenu.style.display = 'block'
+        }     
+    </script>
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./typescript/search.js"></script>
   </body>
 </html>

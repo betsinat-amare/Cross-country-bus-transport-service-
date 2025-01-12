@@ -35,7 +35,7 @@ model BusRoute {
   departure      String
   destination    String
   price          Float
-  seats          Int
+  seats          Int     @default(70)
   bookings       Booking[]
   departureTime  DateTime
   departureplace String
@@ -51,7 +51,7 @@ model Booking {
   lastName    String
   phoneNumber String
   busRouteId  Int
-  seatNumber  Int
+  seatNumber  Int      @default(1)
   status      String   @default("unreserved")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

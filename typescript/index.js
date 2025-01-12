@@ -2,24 +2,64 @@ document.addEventListener("DOMContentLoaded", async function () {
   const cardContainer = document.getElementById("cardContainer");
   const thirdCard = document.getElementById("thirdCard");
   const departureCityEl = document.getElementById("departureCity");
+  const destinationCityEl = document.getElementById("destinationCity");
   const priceText = document.getElementById("priceText");
+  const timeEl= document.getElementById("time");
   const bookingForm = document.getElementById("bookingForm");
-  const departureInput = document.getElementById("departure");
-  const arrivalInput = document.getElementById("arrival");
-  const priceInput = document.getElementById("price");
+  const bookingFormElement = document.getElementById("bookingFormElement");
+  const searchForm = document.getElementById("searchForm");
+  let selectedRouteId = null; // Declare selectedRouteId in the correct scope
+  const profileMenu = document.getElementById("profileMenu");
+  const profileInitial = document.getElementById("profileInitial");
 
-  if (!cardContainer) {
-    console.error("Card container not found");
+    // Check if user is logged in
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      profileMenu.style.display = "block";
+      profileInitial.textContent = user.firstName.charAt(0).toUpperCase();
+
+      if (user.role ==="ADMIN"){
+        adminMenu.style.display="block";
+      }
+    }
+
+
+ if (!cardContainer) {
+  console.error("Card container not found");
     return;
-  }
+ }
+//new code
+const searchResults = JSON.parse(localStorage.getItem("searchResults"));
+if (searchResults && searchResults.length > 0) {
+  const route = searchResults[0]; // Assuming you want to display the first result
+  selectedRouteId = route.id; // Set selectedRouteId
+
+  // Display the route details in the thirdCard container
+  departureCityEl.textContent = route.departure;
+  destinationCityEl.textContent = route.destination;
+  priceText.textContent = `Price: ${route.price} ETB`;
+  const isoDate = route.departureTime;
+  const date = new Date(isoDate);
+  const formattedDate = date.toLocaleString();
+  timeEl.textContent = formattedDate;
+
+  thirdCard.style.display = "block";
+
+  // Clear search results from localStorage
+  localStorage.removeItem("searchResults");
+// till this 
+  }else{
+  console.log("Fetching routes...");
 
   try {
     const response = await fetch("http://localhost:8000/routes");
+
     if (!response.ok) {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
 
     const routes = await response.json();
+    console.log(routes); // Log the response to check the data
 
     if (!routes || routes.length === 0) {
       cardContainer.textContent = "No routes found.";
@@ -30,127 +70,99 @@ document.addEventListener("DOMContentLoaded", async function () {
       const card = document.createElement("div");
       card.className = "card col-md-4 m-3 p-3 border shadow";
       card.style.cursor = "pointer";
+      const isoDate = route.departureTime;
+    const date = new Date(isoDate);
+
+// Format as normal date and time
+    const formattedDate = date.toLocaleString();
+  
+
 
       card.innerHTML = `
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 120px;">
           <p style="margin: 0;"><strong>${route.departure}</strong></p>
           <img src="./assets/image/Vector (4).png" alt="Arrow Icon" style="width: 20px; height: 20px;" />
           <p style="margin: 0;"><strong>${route.destination}</strong></p>
+          <p style="margin: 0;">${formattedDate}</p>
+          <p style="margin: 0;">Price: ${route.price} ETB</p>
+          <p style="margin: 0;">Available Seats: ${route.seats}</p>
+          <p style="margin: 0;">:Passengers:${route.passengers}</p>
+          
+          
+          
         </div>
       `;
 
       card.addEventListener("click", () => {
         cardContainer.style.display = "none";
         thirdCard.style.display = "block";
+        selectedRouteId = route.id; // Set selectedRouteId when a card is clicked
 
         departureCityEl.textContent = route.departure;
-        departureCityEl.nextElementSibling.innerHTML = route.time || "N/A";
+        destinationCityEl.textContent = route.destination;
         priceText.textContent = `Price: ${route.price} ETB`;
       });
 
       cardContainer.appendChild(card);
     });
-  } catch (error) {
-    console.error("Error fetching card data:", error);
-    cardContainer.textContent = "Failed to load routes.";
+    } catch (error) {
+      console.error('Error fetching routes:', error);
+      cardContainer.textContent = "Error fetching routes.";
+
+    }
   }
-});
 
+    document.getElementById("bookTicketButton").addEventListener("click", () => {
+      thirdCard.style.display = "none";
+      bookingForm.style.display = "block";
+    });
 
+    bookingFormElement.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
+      const formData = {
+        firstName: document.getElementById("firstName").value,
+        middleName: document.getElementById("middleName").value,
+        lastName: document.getElementById("lastName").value,
+        phoneNumber: document.getElementById("phoneNumber").value,
+        busRouteId: selectedRouteId, // Use selectedRouteId here
+      };
 
+      try {
+        const bookingResponse = await fetch("http://localhost:8000/booking", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
 
+        if (!bookingResponse.ok) {
+          throw new Error(`Failed to book ticket: ${response.statusText}`);
+        }
 
-
-// console.log("Script loaded")
-// window.onload = function () {
-//   const cardContainer = document.getElementById("cardContainer");
-//   const thirdCard = document.getElementById("thirdCard");
-//   const departureCityEl = document.getElementById("departureCity");
-//   const arrivalCityEl = document.getElementById("arrivalCity");
-//   const priceText = document.getElementById("priceText");
-//   const bookingForm = document.getElementById("bookingForm");
-//   const departureInput = document.getElementById("departure");
-//   const arrivalInput = document.getElementById("arrival");
-
-  // const cardContent = [
-  //   { city1: "Addis Ababa", city2: "Adama", price: "300 ETB" },
-  //   { city1: "Addis Ababa", city2: "Hawassa", price: "500 ETB" },
-  //   { city1: "Addis Ababa", city2: "Jimma", price: "1,050 ETB" },
-  //   { city1: "Addis Ababa", city2: "Gondar", price: "800 ETB" },
-  //   { city1: "Addis Ababa", city2: "Bahir Dar", price: "600 ETB" },
-  //   { city1: "Addis Ababa", city2: "Harar", price: "400 ETB" },
-  //   { city1: "Addis Ababa", city2: "Debre Markos", price: "350 ETB" },
-  //   { city1: "Addis Ababa", city2: "Mekele", price: "750 ETB" },
-  //   { city1: "Addis Ababa", city2: "Yirga Chefe", price: "450 ETB" },
-  //   { city1: "Addis Ababa", city2: "Adigrat", price: "700 ETB" },
-  //   { city1: "Addis Ababa", city2: "Gambela", price: "1,200 ETB" },
-  //   { city1: "Addis Ababa", city2: "Debre Berhan", price: "500 ETB" },
-  //   { city1: "Addis Ababa", city2: "Shashemene", price: "550 ETB" },
-  //   { city1: "Addis Ababa", city2: "Robe", price: "650 ETB" },
-  //   { city1: "Addis Ababa", city2: "Dire Dawa", price: "800 ETB" },
-  // ];
-
-  // Add this to your index.html
-  // <div id="routes-container">
-  //   <div id="routes">
-  //     <h2>Available Routes</h2>
-  //     <ul id="routes-list"></ul>
-  //   </div>
-  // </div>
-  
-  
-    // const response = await fetch('http://localhost:8000/routes');
-    // const routes = await response.json();
-    // routes.forEach(route => {
-    //   const li = document.createElement('li');
-    //   li.textContent = `${route.departure} to ${route.destination} - ${route.price} ETB`;
-    //   routesList.appendChild(li);
-    // });
-
- 
-
-//   cardContent.forEach((content) => {
-//     const card = document.createElement("div");
-//     card.className = "card col-md-4 m-3 p-3 border shadow";
-//     card.style.cursor = "pointer";
-
-//     card.innerHTML = `
-//       <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 120px;">
-//         <p style="margin: 0;">
-//           <strong>${content.city1}</strong>
-//         </p>
-//         <img
-//         src="./assets/image/Vector (4).png"
-          
-//           alt="Arrow Icon"
-//           style="width: 20px; height: 20px;"
-//         />
-//         <p style="margin: 0;">
-//           <strong>${content.city2}</strong>
-//         </p>
-//       </div>
-//     `;
+        const bookingdata = await bookingResponse.json();
+        console.log("Booking successful:", bookingdata);
+        //window.location.href = "./Home.html"; // Redirect to home page
+        const paymentResponse=await fetch("http://localhost:8000/payment",{
+          method:"POST",
+          headers:{
+            "Content-Type": "application/json",
+          },
+          body:JSON.stringify({bookingId:bookingdata.id}),
+        });
+        if(!paymentResponse.ok){
+          throw new Error(`Faild to initiate payment:${paymentResponse.statusText}`)
+        }
+        const paymentData=await paymentResponse.json();
+        console.log("Payment initiation successful:",paymentData);
+        
+        window.location.href=paymentData.data.checkout_url;
+      } catch (error) {
+        console.error("Error processing booking or payment:", error);
+        // Show error message
+      }
+    });
+  });
 
    
-//     card.addEventListener("click", () => {
-//       cardContainer.style.display = "none"; 
-//       thirdCard.style.display = "block"; 
-//       departureCityEl.textContent = content.city1;
-//       arrivalCityEl.textContent = content.city2;
-//       priceText.textContent = content.price;
-//     });
-
-//     cardContainer.appendChild(card);
-//   });
-
- 
-//   const bookTicketButton = document.getElementById("bookTicketButton");
-//   bookTicketButton.addEventListener("click", () => {
-//     thirdCard.style.display = "none"; 
-//     bookingForm.style.display = "block"; 
-//     departureInput.value = departureCityEl.textContent;
-//     arrivalInput.value = arrivalCityEl.textContent;
-//     priceInput.value = priceText.textContent;
-//   });
-// };
